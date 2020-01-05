@@ -9,10 +9,10 @@
 import UIKit
 
 class IssuesListViewController: UIViewController, IssuesListProtocol {
-    
     @IBOutlet weak var tableView: UITableView!
     
-    var issuesListVM: IssuesListViewModel!
+    private var issuesListVM: IssuesListViewModel!
+    private var selectedIssue: IssueViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,11 +24,22 @@ class IssuesListViewController: UIViewController, IssuesListProtocol {
         self.issuesListVM.delegate = self
         self.tableView.delegate = issuesListVM
         self.tableView.dataSource = issuesListVM
-//        self.tableView.rowHeight = UITableView.automaticDimension
     }
     
     func listDidUpdate() {
         self.tableView.reloadData()
+    }
+    
+    func didSelectIssue(issue: IssueViewModel) {
+        self.selectedIssue = issue
+        performSegue(withIdentifier: "goToIssueSegue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToIssueSegue" {
+            let destination = segue.destination as! IssueViewController
+            destination.issueViewModel = self.selectedIssue
+        }
     }
 }
 
@@ -40,6 +51,10 @@ extension IssuesListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return issuesListVM.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.issuesListVM.tableView(tableView, didSelectRowAt: indexPath)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

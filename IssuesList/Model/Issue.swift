@@ -16,6 +16,7 @@ enum IssueState: String {
 struct Issue {
     let title: String
     let description: String
+    let userName: String
     let avatarURL: String
     let createdAt: Date
     let state: IssueState

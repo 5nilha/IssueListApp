@@ -27,11 +27,12 @@ class WebServices {
                 let title = value["title"] as? String ?? ""
 //                let createdAt = value["created_at"] as? Date
                 let user = value["user"] as! [String : Any]
+                let userName = user["login"] as? String ?? ""
                 let avatar = user["avatar_url"] as? String ?? ""
                 let state = value["state"] as? String ?? ""
                 let issueURL = value["html_url"] as? String ?? ""
                 
-                let issueVM = IssueViewModel(title: title, description: body, avatarURL: avatar, createdAt: Date(), state: state, issueURL: issueURL)
+                let issueVM = IssueViewModel(title: title, description: body, userName: userName, avatarURL: avatar, createdAt: Date(), state: state, issueURL: issueURL)
                 issues.append(issueVM)
             }
             completion(issues)

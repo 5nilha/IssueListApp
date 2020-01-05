@@ -10,6 +10,8 @@ import UIKit
 
 protocol IssuesListProtocol {
     func listDidUpdate()
+    func didSelectIssue(issue: IssueViewModel)
+    
 }
 
 class IssuesListViewModel: NSObject {
@@ -37,6 +39,7 @@ class IssuesListViewModel: NSObject {
     func issueAtCell(indexPath: IndexPath) -> IssueViewModel {
         return issuesList[indexPath.row]
     }
+
 }
 
 extension IssuesListViewModel: UITableViewDataSource {
@@ -53,6 +56,13 @@ extension IssuesListViewModel: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: IssueCell.identifier, for: indexPath) as! IssueCell
         cell.setupCell(issue: issueAtCell(indexPath: indexPath))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let issue = issueAtCell(indexPath: indexPath)
+        if self.delegate != nil {
+            self.delegate.didSelectIssue(issue: issue)
+        }
     }
 }
 
