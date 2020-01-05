@@ -17,7 +17,7 @@ class IssueNameAndAvatarCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.avatarImageView.layer.cornerRadius = self.avatarImageView.bounds.height / 2
     }
     
     func setupCell(item: IssueItemViewModelProtocol) {

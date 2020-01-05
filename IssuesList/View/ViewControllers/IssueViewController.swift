@@ -23,6 +23,22 @@ class IssueViewController: UIViewController {
         self.issueItemsVM = IssueItemsViewModel(issueVM: issueViewModel)
         self.tableView.delegate = issueItemsVM
         self.tableView.dataSource = issueItemsVM
+        
+        let dateView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: self.view.frame.width, height: 20)))
+        
+        let dateLabel = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: self.view.frame.width, height: 20)))
+        dateLabel.text = issueViewModel.createdAt
+        dateLabel.textColor = .gray
+        dateLabel.font = .systemFont(ofSize: 14, weight: .medium)
+        dateView.addSubview(dateLabel)
+        
+        self.navigationItem.titleView = dateView
+    }
+    
+    @IBAction func openIssueOnWebClicked() {
+        if let url = URL(string: issueViewModel.issueLink) {
+            UIApplication.shared.open(url)
+        }
     }
 }
 
@@ -37,6 +53,10 @@ extension IssueViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return self.issueItemsVM.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return self.issueItemsVM.tableView(tableView, viewForHeaderInSection: section)
     }
 
 }

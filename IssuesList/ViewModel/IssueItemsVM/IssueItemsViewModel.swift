@@ -21,10 +21,7 @@ class IssueItemsViewModel: NSObject {
         let nameAndAvatarItem = IssueNameAndAvatarVM(name: issue.userName, avatarURL: issue.avatarURL, createdAt: issue.createdAt)
         items.append(nameAndAvatarItem)
         
-        let titleItem = IssueTitleVM(title: issue.title)
-        items.append(titleItem)
-        
-        let body = IssueBodyVM(body: issue.description)
+        let body = IssueBodyVM(title: issue.title, body: issue.description)
         items.append(body)
     }
 }
@@ -46,10 +43,6 @@ extension IssueItemsViewModel: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "IssueNameAndAvatarCell", for: indexPath) as! IssueNameAndAvatarCell
             cell.setupCell(item: item)
             return cell
-        case .title:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "IssueTitleCell", for: indexPath) as! IssueTitleCell
-            cell.setupCell(item: item)
-            return cell
         case .body:
             let cell = tableView.dequeueReusableCell(withIdentifier: "IssueBodyCell", for: indexPath) as! IssueBodyCell
             cell.setupCell(item: item)
@@ -62,5 +55,37 @@ extension IssueItemsViewModel: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let item = items[section]
+        return item.sectionHeaderHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let item = items[section]
+        
+        switch item.type {
+        case .nameAndAvatar:
+            return nil
+        case .body:
+            let headerView = setHeaderView(tableView: tableView, height: item.sectionHeaderHeight, color: .systemGroupedBackground, title: item.sectionTitle)
+            return headerView
+        }
+        
+    }
+    
+    private func setHeaderView(tableView: UITableView, height: CGFloat, color: UIColor, title: String) -> UIView {
+        let headerView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: tableView.bounds.width, height: height)))
+        headerView.backgroundColor = color
+        
+        let titleLabel = UILabel(frame: CGRect(origin: .init(x: 20, y: 0), size: CGSize(width: headerView.bounds.width - 40, height: headerView.bounds.height)))
+        
+        titleLabel.textColor = .black
+        titleLabel.text = title
+        titleLabel.font = .systemFont(ofSize: 13, weight: .medium)
+        titleLabel.numberOfLines = 0
+        headerView.addSubview(titleLabel)
+                
+        return headerView
+    }
 }

@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="issueCell" rowHeight="84" id="ceI-ou-aDF" customClass="IssueCell" customModule="IssuesList" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="issueCell" rowHeight="84" id="ceI-ou-aDF" customClass="IssueCell" customModule="IssuesList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="84"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ceI-ou-aDF" id="iqH-nY-aWQ">
@@ -100,7 +100,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uXc-Xh-0bH">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uXc-Xh-0bH">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
@@ -143,33 +143,8 @@
                                             <outlet property="userNameLabel" destination="CLX-fJ-cqK" id="Aty-YD-yIj"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueTitleCell" rowHeight="79" id="fAJ-1A-Vko" customClass="IssueTitleCell" customModule="IssuesList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="109" width="414" height="79"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fAJ-1A-Vko" id="nQr-Co-PJf">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8y7-Lg-LQq">
-                                                    <rect key="frame" x="30" y="21" width="354" height="27"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="8y7-Lg-LQq" firstAttribute="leading" secondItem="nQr-Co-PJf" secondAttribute="leadingMargin" constant="10" id="2N6-ex-8BR"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="8y7-Lg-LQq" secondAttribute="bottom" constant="20" id="CI1-Ej-Z5g"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="8y7-Lg-LQq" secondAttribute="trailing" constant="10" id="Zgj-7p-XND"/>
-                                                <constraint firstItem="8y7-Lg-LQq" firstAttribute="top" secondItem="nQr-Co-PJf" secondAttribute="topMargin" constant="10" id="frC-CZ-c4T"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="titleLabel" destination="8y7-Lg-LQq" id="KtW-Dl-TZ8"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="IssueBodyCell" rowHeight="79" id="NHU-Gt-LIZ" customClass="IssueBodyCell" customModule="IssuesList" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="188" width="414" height="79"/>
+                                        <rect key="frame" x="0.0" y="109" width="414" height="79"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NHU-Gt-LIZ" id="OKG-MO-Jn7">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="79"/>
@@ -205,7 +180,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AF2-KZ-xrm"/>
                     </view>
-                    <navigationItem key="navigationItem" id="FMr-bM-tkk"/>
+                    <navigationItem key="navigationItem" id="FMr-bM-tkk">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="globe" catalog="system" id="D1E-qc-PzB">
+                            <connections>
+                                <action selector="openIssueOnWebClicked" destination="Awv-ez-MIN" id="lQB-th-rh2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="uXc-Xh-0bH" id="2zb-aJ-34S"/>
                     </connections>
@@ -234,6 +215,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="globe" catalog="system" width="64" height="60"/>
         <image name="person.crop.circle.fill.badge.plus" catalog="system" width="64" height="50"/>
     </resources>
 </document>

@@ -19,4 +19,11 @@ extension Date {
         
         return "\(calendar.component(.day, from: self)) de \(monthString) de \(calendar.component(.year, from: self))"
     }
+    
+    static func stringDateToDate(stringDate: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZZZ"
+        let date = dateFormatter.date(from: stringDate)
+        return date
+    }
 }

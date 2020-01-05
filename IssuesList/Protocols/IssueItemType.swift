@@ -10,6 +10,5 @@ import Foundation
 
 enum IssueItemType {
     case nameAndAvatar
-    case title
     case body
 }

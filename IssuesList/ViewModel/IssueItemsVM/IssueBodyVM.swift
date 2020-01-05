@@ -10,9 +10,11 @@ import UIKit
 
 class IssueBodyVM{
     let body: String
+    private let title: String
 
-    init(body: String) {
+    init(title: String, body: String) {
         self.body = body
+        self.title = title
     }
 }
 
@@ -22,6 +24,11 @@ extension IssueBodyVM: IssueItemViewModelProtocol {
     }
     
     var sectionTitle: String {
-        return "Descrição"
+        return self.title
+    }
+    
+    var sectionHeaderHeight: CGFloat {
+        return 80
     }
 }
+
