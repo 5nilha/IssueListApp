@@ -28,7 +28,7 @@ class IssueViewController: UIViewController {
         
         let dateLabel = UILabel(frame: CGRect(origin: .zero, size: CGSize(width: self.view.frame.width, height: 20)))
         dateLabel.text = issueViewModel.createdAt
-        dateLabel.textColor = .gray
+        dateLabel.textColor = .white
         dateLabel.font = .systemFont(ofSize: 14, weight: .medium)
         dateView.addSubview(dateLabel)
         

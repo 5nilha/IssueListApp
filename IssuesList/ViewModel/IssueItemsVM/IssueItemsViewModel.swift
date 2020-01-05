@@ -82,7 +82,7 @@ extension IssueItemsViewModel: UITableViewDelegate {
         
         titleLabel.textColor = .black
         titleLabel.text = title
-        titleLabel.font = .systemFont(ofSize: 13, weight: .medium)
+        titleLabel.font = .systemFont(ofSize: 15, weight: .medium)
         titleLabel.numberOfLines = 0
         headerView.addSubview(titleLabel)
                 

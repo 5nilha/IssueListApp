@@ -24,6 +24,8 @@ class IssuesListViewController: UIViewController, IssuesListProtocol {
         self.issuesListVM.delegate = self
         self.tableView.delegate = issuesListVM
         self.tableView.dataSource = issuesListVM
+        
+        self.navigationItem.title = "Apple Swift Issues"
     }
     
     func listDidUpdate() {
