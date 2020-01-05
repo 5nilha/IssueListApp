@@ -8,8 +8,27 @@
 
 import UIKit
 
+protocol IssuesListProtocol {
+    func listDidUpdate()
+}
+
 class IssuesListViewModel: NSObject {
-    private let issuesList = [IssueViewModel]()
+    private var issuesList = [IssueViewModel]()
+    var delegate: IssuesListProtocol!
+    
+    override init() {
+        super.init()
+        WebServices.fetchIssues { [weak self] (issues) in
+            guard let issues = issues else { return }
+            self?.issuesList = issues
+            
+            DispatchQueue.main.async {
+                if self?.delegate != nil {
+                  self?.delegate.listDidUpdate()
+                }
+            }
+        }
+    }
     
     var numOfIssues: Int {
         return self.issuesList.count
@@ -38,6 +57,10 @@ extension IssuesListViewModel: UITableViewDataSource {
 }
 
 extension IssuesListViewModel: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
     
 }
 

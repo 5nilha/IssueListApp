@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IssuesListViewController: UIViewController {
+class IssuesListViewController: UIViewController, IssuesListProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,8 +21,14 @@ class IssuesListViewController: UIViewController {
     
     private func setupView() {
         self.issuesListVM = IssuesListViewModel()
+        self.issuesListVM.delegate = self
         self.tableView.delegate = issuesListVM
         self.tableView.dataSource = issuesListVM
+//        self.tableView.rowHeight = UITableView.automaticDimension
+    }
+    
+    func listDidUpdate() {
+        self.tableView.reloadData()
     }
 }
 
@@ -34,5 +40,9 @@ extension IssuesListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return issuesListVM.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return issuesListVM.tableView(tableView, heightForRowAt: indexPath)
     }
 }

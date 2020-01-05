@@ -8,11 +8,16 @@
 
 import Foundation
 
+enum IssueState: String {
+    case closed
+    case open
+}
+
 struct Issue {
     let title: String
     let description: String
     let avatarURL: String
     let createdAt: Date
-    let state: String
+    let state: IssueState
     let issueURL: String
 }
