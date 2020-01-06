@@ -96,7 +96,7 @@
         <!--Issue View Controller-->
         <scene sceneID="5uY-gH-5Xh">
             <objects>
-                <viewController id="Awv-ez-MIN" customClass="IssueViewController" customModule="IssuesList" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IssueViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Awv-ez-MIN" customClass="IssueViewController" customModule="IssuesList" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BHu-o8-SMs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

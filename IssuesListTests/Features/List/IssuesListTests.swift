@@ -16,7 +16,7 @@ class IssuesListTests: QuickSpec {
    override func spec() {
         var subject: IssuesListViewController!
         
-        describe("IssuesViewControllerSpec") {
+        describe("IssuesListViewControllerSpec") {
             beforeEach {
                 subject = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: IssuesListViewController.viewControllerIdentifier) as? IssuesListViewController
                 _ = subject.view

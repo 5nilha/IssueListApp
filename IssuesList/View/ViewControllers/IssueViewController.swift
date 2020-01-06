@@ -11,6 +11,8 @@ import UIKit
 class IssueViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    static let viewControllerIdentifier = "IssueViewController"
     private var issueItemsVM: IssueItemsViewModel!
     var issueViewModel: IssueViewModel!
 
