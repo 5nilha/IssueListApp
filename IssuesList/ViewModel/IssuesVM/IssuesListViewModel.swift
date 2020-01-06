@@ -32,6 +32,13 @@ class IssuesListViewModel: NSObject {
         }
     }
     
+    func testIssueListViewModel(issuesList: [IssueViewModel]) {
+        self.issuesList = issuesList
+        if self.delegate != nil {
+            self.delegate.listDidUpdate()
+        }
+    }
+    
     var numOfIssues: Int {
         return self.issuesList.count
     }

@@ -11,9 +11,17 @@ import UIKit
 struct IssueViewModel {
     private let issue: Issue
     
-    init(title: String, description: String, userName: String, avatarURL: String, createdAt: Date, state: String, issueURL: String) {
-        //Read Issue from JSON USING ALAMOFILE
-        self.issue = Issue(title: title, description: description, userName: userName,  avatarURL: avatarURL, createdAt: createdAt, state: IssueState(rawValue: state)!, issueURL: issueURL)
+    init(dataJSON: [String : Any]) {
+        let body = dataJSON["body"] as? String ?? ""
+        let title = dataJSON["title"] as? String ?? ""
+        let createdAt = Date.stringDateToDate(stringDate: dataJSON["created_at"] as! String)
+        let user = dataJSON["user"] as! [String : Any]
+        let userName = user["login"] as? String ?? ""
+        let avatarURL = user["avatar_url"] as? String ?? ""
+        let state = dataJSON["state"] as? String ?? ""
+        let issueURL = dataJSON["html_url"] as? String ?? ""
+        
+        self.issue = Issue(title: title, description: body, userName: userName,  avatarURL: avatarURL, createdAt: createdAt!, state: IssueState(rawValue: state)!, issueURL: issueURL)
     }
     
     var title: String {

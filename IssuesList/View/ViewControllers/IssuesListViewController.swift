@@ -11,7 +11,8 @@ import UIKit
 class IssuesListViewController: UIViewController, IssuesListProtocol {
     @IBOutlet weak var tableView: UITableView!
     
-    private var issuesListVM: IssuesListViewModel!
+    static let viewControllerIdentifier = "IssuesListViewController"
+    var issuesListVM: IssuesListViewModel!
     private var selectedIssue: IssueViewModel!
 
     override func viewDidLoad() {
